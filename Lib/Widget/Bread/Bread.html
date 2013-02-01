@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/javascript">
+    var getObj = function(id){
+        if (!id) return null;
+        if ('string' == typeof id || id instanceof String) {
+            return document.getElementById(id);
+        } else if (id.nodeName && (id.nodeType == 1 || id.nodeType == 9)) {
+            return id;
+        }
+        return null;
+    };
+    var Bread = function(opt){
+        this.initOptions(opt);
+    }
+    Bread.prototype = {
+        initOptions : function(opt){
+            var me = this;
+            for (var k in opt) {
+                me[k] = opt[k];
+            }
+        },
+        getHtmlTpl : function(){
+            return '<p '+(this.className ? "class="+this.className : "")+'>'+this.getContentHtmlTpl()+'</p>';
+        },
+        getContentHtmlTpl : function(){
+            var data = this.data || '[{"name":"首页","link":"www.baidu.com"},{"name":"其他页","link":"www.sohu.com"},{"name":"其他页的其他页","link":"www.sina.com"}]';
+            var obj = eval('('+data+')');
+            var arr = [];
+            for(var i=0,item;item = obj[i++];){
+                arr.push("<a href='"+item.link+"'>"+item.name+"</a>");
+            }
+            return arr.join(this.separator || ">");
+        },
+        render : function(id){
+            getObj(id||this.id).innerHTML = this.getHtmlTpl();
+        }
+    };
+    var opt = {
+        id:"container",       //容器id
+        className : "bread",
+        data:'[{"name":"首页","link":"www.baidu.com"},{"name":"其他页","link":"www.sohu.com"},{"name":"其他","link":"www.sina.com"}]',    //数据
+        separator:'>>>'              //分隔符  可写html
+    };
+    var bread = new Bread(opt);
+    bread.render()
+
+</script>
+</body>
+</html>

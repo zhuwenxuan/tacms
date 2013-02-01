@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link type="text/css" href="__PUBLIC__/css/common.css" rel="stylesheet" />
+    <link type="text/css" href="__PUBLIC__/css/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1-7-2.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-ui.js"></script>
+    <style type="text/css">
+        /*demo page css*/
+        body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+        #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+        #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+
+        .wrap{
+            width:1080px;
+            margin: 0 auto;
+            border:1px solid #125dd1;
+            padding: 10px;
+        }
+        .head{
+            width:98%;
+            height: 200px;
+            margin: 10px;
+            border: 1px solid #125dd1;
+        }
+        .left{
+            width:220px;
+            height:600px;
+            float: left;
+            margin: 5px 10px;
+            border: 1px solid #125dd1;
+        }
+        .right{
+            width:800px;
+            height:600px;
+            float: right;
+            margin: 5px 10px;
+            border: 1px solid #125dd1;
+        }
+        .foot{
+            width:98%;
+            height: 200px;
+            margin: 10px;
+            border: 1px solid #125dd1;
+        }
+        .clear{
+            clear:both;
+        }
+        .btn{
+            float: right;
+            width:50px;
+            height:20px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <div class="head">{:W('Display',array('position'=>"head",'layoutid'=>"$layoutid"))}</div>
+    <div class="left">{:W('Display',array('position'=>"left",'layoutid'=>"$layoutid"))}</div>
+    <div class="right">{:W('Display',array('position'=>"right",'layoutid'=>"$layoutid"))}</div>
+    <div class="clear"></div>
+    <div class="foot">{:W('Display',array('position'=>"foot",'layoutid'=>"$layoutid"))}</div>
+
+    <div id="dialog" title="Dialog Title">
+
+    </div>
+    <input type="hidden" id="subpath" value="__APP__">
+    <input type="hidden" id="layoutid" value="{$layoutid}">
+</div>
+
+<script type="text/javascript">
+    $('#dialog').dialog({
+        autoOpen: false,
+        modal:true,
+        width: 600,
+        buttons: {
+            "Ok": function() {
+                $(this).dialog("close");
+                var pos = $("#position")[0].value;
+                $.ajax({
+                    type:"post",
+                    url:$("#subpath")[0].value+"/Admin/Layout/addWidget",
+                    data:"layoutid="+$("#layoutid")[0].value+"&name="+$('#wname')[0].value+"&position="+pos+"&param="+widgetSubmit(),
+                    success:function(msg){
+                        $("."+pos).append(msg);
+                    }
+                });
+            },
+            "Cancel": function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+    //给每块增加悬浮按钮
+    (function(){
+        var layout = Array("head","left","right","foot");
+        var listContent = $(".wrap div");
+        $(listContent).each(function(key,item){
+            if(item.className&&layout.join("|").indexOf(item.className)!=-1){
+                var upbtn = createButton(item.className+"_up_btn","btn");
+                upbtn.innerHTML = "修改";
+                var delbtn = createButton(item.className+"_del_btn","btn");
+                delbtn.innerHTML = "删除";
+                (function(btn,position){
+                    $(btn).click(function(){
+                        var pos = position;
+                        $.ajax({
+                            type:"post",
+                            url:$("#subpath")[0].value+"/Admin/Layout/editWidgetHtml",
+                            data:"layoutid="+$("#layoutid")[0].value+"&position="+pos+"&type=menu",
+                            success:function(msg){
+                                var obj = $.parseJSON(msg);
+                                if(obj.datatype == "widgetList"){
+                                    var listWidget = [];
+                                    $(obj.value).each(function(index,widget){
+                                        listWidget.push("<span onclick='changeWidget(this,\""+pos+"\")'>"+widget+"</span><br>");
+                                    });
+                                    $("#dialog").html(listWidget.join(""));
+                                }else if(obj.datatype == "editpage"){
+                                    $("#dialog").html(obj.value);
+                                }
+                            }
+                        });
+                        $('#dialog').dialog('open');
+                    });
+
+                })(upbtn,item.className);
+                (function(btn,position){
+                    $(btn).click(function(){
+                        var pos = position;
+                        $.ajax({
+                            type:"post",
+                            url:$("#subpath")[0].value+"/Admin/Layout/editWidgetHtml",
+                            data:"layoutid="+$("#layoutid")[0].value+"&position="+pos+"&type=menu",
+                            success:function(msg){
+                                alert("delete ok");
+                            }
+                        });
+                        $('#dialog').dialog('open');
+                    });
+
+                })(delbtn,item.className);
+                $(item).append(upbtn);
+                $(item).append(delbtn);
+            }
+        });
+        function createButton(id,className){
+            var btn = $("<div>")[0];
+            btn.id = id;
+            btn.className = className;
+            return btn;
+        }
+    })();
+    function changeWidget(obj,position){
+        $.ajax({
+            type:"post",
+            url:$("#subpath")[0].value+"/Admin/Layout/editWidgetHtml",
+            data:"wname="+$(obj).html()+"&layoutid="+$("#layoutid")[0].value+"&position="+position,
+            success:function(msg){
+                var obj = $.parseJSON(msg);
+                if(obj.datatype == "editpage"){
+                    $("#dialog").html(obj.value);
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

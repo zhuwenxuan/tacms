@@ -1,0 +1,27 @@
+<table id="bread">
+    <tr>
+        <th>分隔符</th>
+    </tr>
+    <tr>
+        <td><input type="text" name="separator"></td>
+    </tr>
+</table>
+<script type="text/javascript">
+    function widgetSubmit(){
+        var trlist = $("#bread tr");
+        var objarr = [];
+        $(trlist).each(function(i,v){
+            if(i>0){
+                var ipts = v.getElementsByTagName("input");
+                var str = [];
+                $(ipts).each(function(ii,ipt){
+                    if($(ipt).attr("type")=="text"){
+                        str.push("'"+$(ipt).attr("name")+"':'"+ipt.value+"'");
+                    }
+                });
+                objarr.push("{"+str.join(",")+"}");
+            }
+        });
+        return "["+objarr.join(",")+"]";
+    }
+</script>

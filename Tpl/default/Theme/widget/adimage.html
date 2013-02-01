@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" src="../Public/js/jquery-1-7-2.js"></script>
+    <style type="text/css">
+        #adimage{
+            width:762px;
+        }
+        #adimage a{
+            display: block;
+        }
+        #adimage a img{
+            border:0px;
+        }
+        #adimage .text{
+            display: block;
+            margin-top:-20px;
+            text-align: center;
+        }
+        #adimage .text a{
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="adimage">
+</div>
+<script type="text/javascript">
+    var data = '[{"title":"aaa","src":"http://www.315sex.com/themes/azg2012GDK/images/c1.jpg","link":"aaa.html"},' +
+            '{"title":"bbb","src":"http://www.315sex.com/themes/azg2012GDK/images/c3.jpg","link":"bbb.html"},' +
+            '{"title":"bbb","src":"http://www.315sex.com/themes/azg2012GDK/images/c8.jpg","link":"bbb.html"},' +
+            '{"title":"bbb","src":"http://www.315sex.com/themes/azg2012GDK/images/a5.jpg","link":"bbb.html"},' +
+            '{"title":"bbb","src":"http://www.315sex.com/themes/azg2012GDK/images/a6.jpg","link":"bbb.html"}]';
+
+    var id = "adimage";
+    (function(id,data){
+        window.ui={};
+        var Adimage = function(id,data){
+            this.obj = data&&jQuery.parseJSON(data);
+            this.handList = [];
+            this.strList = [];
+            this.root = "#"+id;
+            this.width = $(this.root).width();
+            this.count = $(this.obj).toArray().length;
+            this.w = parseInt(this.width/this.count);
+            this.initImage();
+        };
+        Adimage.prototype = {
+            initImage : function(){
+                var me = this;
+                $(this.obj).each(function(i,o){
+
+                    me.handList.push('<a href="'+o.link+'" style="width:'+me.w+'px" title="'+o.title+'" target="_blank" onmouseover="ui.show('+i+')" >'+o.title+'</a>');
+                    me.strList.push('<a href="'+o.link+'" title="'+o.title+'" target="_blank"><img src="'+o.src+'" ></a>');
+                });
+            },
+            _getImages : function(index){
+                return !isNaN(index) ? $(this.root+">a")[index] : $(this.root+">a");
+            },
+            _hideAll : function(){
+                var img = this._getImages();
+                $(img).each(function(i,item){
+                    item.style.display = "none";
+                });
+            },
+            showImage : function(index){
+                this._hideAll();
+                this._getImages(index).style.display = "";
+            },
+            render : function(){
+                $(this.root).html(this.strList.join("")+"<span class='text'>"+this.handList.join("")+
+                                        "<span class='clear'></span></span>");
+            }
+        };
+        var ad = new Adimage(id,data);
+        ad.render();
+        window.ui.show = function(index){
+            ad.showImage(index);
+        };
+        var current = 0;
+        var timer = setInterval(function(){
+            if(current==ad.count-1)
+                current = 0;
+            else{
+                current +=1;
+            }
+            ad.showImage(current);
+        },3000);
+        ad.showImage(0);
+    })(id,data);
+
+</script>
+</body>
+</html>

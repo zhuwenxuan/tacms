@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>文章首页列表</title>
+  
+</head>
+<body>
+<div id="myOfferEmail">
+	<p>发件人邮箱：<input type="text" name="email" id="email"></p>
+	<p>发件人服务器：<input type="text" name="stmp" id="stmp"></p>
+	<p>发件人密码：<input type="text" name="userPassword" id="userPassword"></p>
+	<p>发件人姓名：<input type="text" name="username" id="username"></p>
+</div>
+
+	<script type="text/javascript">
+		/*(function (){//初始化数值
+		alert("${'param'}");
+				document.getElementById('count').value="{$data['param']['count']}"
+			document.getElementById('catid').value="{$data['param']['catid']}";
+		})();*/
+	//	alert('{$param}');
+				(function (){
+		var param = {$param};
+			if(param != ''){
+			document.getElementById('email').value=param[0].email;
+			document.getElementById('stmp').value=param[0].stmp;
+			document.getElementById('userPassword').value=param[0].userPassword;
+			document.getElementById('username').value=param[0].username;
+			
+		}
+		
+		
+	})();
+	
+		    function widgetSubmit(){
+				
+     
+        var objarr = [];
+		var str = [];
+   			var email = document.getElementById('email');
+			var stmp = document.getElementById('stmp');
+			var userPassword=document.getElementById('userPassword');
+			var username=document.getElementById('username');
+			
+						
+						str.push('"email":"'+email.value+'"');
+                        str.push('"stmp":"'+stmp.value+'"');
+                        str.push('"userPassword":"'+userPassword.value+'"');
+                        str.push('"username":"'+username.value+'"');
+		objarr.push("{"+str.join(",")+"}");
+       return "["+objarr.join(",")+"]";
+    }
+	</script>
+</body>
+</html>

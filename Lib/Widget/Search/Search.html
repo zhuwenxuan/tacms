@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="/Public/widget/Search/resource/index.css">
+    <title></title>
+</head>
+<body>
+<div id="search_container">
+</div>
+<script type="text/javascript">
+    var getObj = function(id){
+        return document.getElementById(id);
+    }
+    var Search = function(opt){
+        this.initOptions(opt);
+    }
+    Search.prototype = {
+        initOptions : function(opt){
+            var me = this;
+            for (var k in opt) {
+                me[k] = opt[k];
+            }
+        },
+        getHtmlTpl : function(){
+            return '<div class="'+this.className+'">' +
+                    '<form action="'+this.action+'"><input onclick="this.value=\'\'" class="ipt" type="text" value="'+this.defaultText+'">' +
+                    '<select class=""><option>租房</option><option>买房</option></select>' +
+                    '<input name="search" id="search_button" type="submit" value=""  class="btn-s">' +
+                    '</form></div>';
+        },
+        render : function(id){
+            getObj(id||this.id).innerHTML = this.getHtmlTpl();
+        }
+    };
+    var s = new Search({
+        className:"wrap_ipt",
+        defaultText:"输入房源特征",
+        action:""
+    });
+    s.render("search_container");
+</script>
+</body>
+</html>

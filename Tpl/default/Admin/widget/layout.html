@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link type="text/css" href="../Public/css/common.css" rel="stylesheet" />
+    <link type="text/css" href="../Public/css/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="../Public/js/jquery-1-7-2.js"></script>
+    <script type="text/javascript" src="../Public/js/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            // Dialog
+            $('#dialog').dialog({
+                autoOpen: false,
+                modal:true,
+                width: 600,
+                buttons: {
+                    "Ok": function() {
+                        $(this).dialog("close");
+                    },
+                    "Cancel": function() {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        /*demo page css*/
+        body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}
+        #dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+        #dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+
+        .wrap{
+            width:1080px;
+            margin: 0 auto;
+            border:1px solid #125dd1;
+            padding: 10px;
+        }
+        .head{
+            width:98%;
+            height: 200px;
+            margin: 10px;
+            border: 1px solid #125dd1;
+        }
+        .left{
+            width:220px;
+            height:600px;
+            float: left;
+            margin: 5px 10px;
+            border: 1px solid #125dd1;
+        }
+        .right{
+            width:800px;
+            height:600px;
+            float: right;
+            margin: 5px 10px;
+            border: 1px solid #125dd1;
+        }
+        .foot{
+            width:98%;
+            height: 200px;
+            margin: 10px;
+            border: 1px solid #125dd1;
+        }
+        .clear{
+            clear:both;
+        }
+        .btn{
+            float: right;
+            width:50px;
+            height:20px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <div class="head"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="clear"></div>
+    <div class="foot"></div>
+
+    <div id="dialog" title="Dialog Title">
+        <p>这里的内容可以修改</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //给每块增加悬浮按钮
+    (function(){
+        var layout = Array("head","left","right","foot");
+        var listContent = $(".wrap div");
+        $(listContent).each(function(key,item){
+            if(item.className&&layout.join("|").indexOf(item.className)!=-1){
+                var btn = createButton(item.className);
+                (function(btn){
+                    $(btn).click(function(){
+                        $('#dialog').dialog('open');
+                    });
+                })(btn);
+                $(item).append(btn);
+            }
+        });
+        function createButton(id){
+            var btn = $("<div>")[0];
+            btn.id = id;
+            btn.className = "btn";
+            btn.innerHTML = "修改";
+            return btn;
+        }
+    })();
+</script>
+</body>
+</html>

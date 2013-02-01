@@ -1,0 +1,18 @@
+ul{list-style: none;margin: 0;padding: 0;}
+.clear{clear:both;}
+.xfui-history-desc a,.xfui-history-desc  a:active,.xfui-history-desc  a:hover,.xfui-history-desc  a:visited{color:#ffffff;text-decoration: none;}
+
+
+.xfui-history{width:240px;font-size: 12px;background-color: white;min-height: 376px;border: 1px solid #ccc;}
+.xfui-history-header{padding: 7px;color:#ffffff;font-weight: bold;-moz-border-radius: 5px 5px 0 0;border-radius:5px 5px 0 0;}
+.xfui-history-header .xfui-history-left{float: left;}
+.xfui-history-header .xfui-history-right{float: right;cursor: pointer;}
+.xfui-history-content{border: 1px solid #DDDDDD;}
+.xfui-history-content .xfui-history-item{padding: 5px;}
+.xfui-history-content .xfui-history-item .xfui-history-img{float: left;margin-right: 10px;}
+.xfui-history-content .xfui-history-item .xfui-history-desc a{color: #323232;}
+
+
+.xfui-history-red{background-color: #D01D00;}
+.xfui-history-blue{background-color: #4D87B4;}
+.xfui-history-content .egg{background-color: #F6F6F6;}

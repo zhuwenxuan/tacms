@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title></title>
+        <!--<script type="text/javascript" src="/Public/jsframe/xf_api.js"></script>-->
+        <link type="text/css" href="/Public/widget/History/css/history.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div id="xfui-history" class="xfui-box xfui-history ">
+            <div class="xfui-history-header xfui-history-blue">
+                <span class="xfui-history-left">您的浏览历史</span>
+                <span class="xfui-history-right" onclick="delCookie()">[清空]</span>
+                <div class="clear">
+                </div>
+            </div>
+            <ul id="xfui_history_content" class="xfui-history-content">
+            	<volist id="vo" name="homes"  mod="2">
+                <li class="xfui-history-item 
+				<eq name='mod' value='1'>
+                 egg
+            </eq>">
+                    <p class="xfui-history-desc">
+                        <img class="xfui-history-img" onerror="this.src='/Public/images/indexnopic.jpg'" src="{$vo.thumb}"><a href="{$vo.url}">{$vo.title}</a>
+                    </p>
+                    <div class="clear">
+                    </div>
+                    <p>
+                    </p>
+                </li>
+				</volist>
+            </ul>
+        </div>
+    <script type="text/javascript">
+        //读取cookies
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return decodeURIComponent(decodeURI(arr[2]));
+            else
+                return null;
+        }
+        function URLdecode(str) {
+            var ret = "";
+            for(var i=0;i<str.length;i++) {
+                    var chr = str.charAt(i);
+                    if(chr == "+") {
+                            ret += " ";
+                    }else if(chr=="%") {
+                            var asc = str.substring(i+1,i+3);
+                            if(parseInt("0x"+asc)>0x7f) {
+                                    ret += decodeURI("%"+ str.substring(i+1,i+9));
+                                    i += 8;
+                            }else {
+                                    ret += String.fromCharCode(parseInt("0x"+asc));
+                                    i += 2;
+                            }
+                    }else {
+                            ret += chr;
+                    }
+            }
+            return ret;
+    }
+        //删除cookies
+        function delCookie() {
+            var name = "home_history";
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            if (cval != null)
+                document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+            document.getElementById("xfui_history_content").innerHTML = "";
+        }
+    </script>
+    </body>
+</html>

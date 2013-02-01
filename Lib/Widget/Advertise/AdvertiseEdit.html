@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="/Public/widget/internal.js"></script>
+    <title></title>
+</head>
+<body>
+<select id="adtype">
+<volist name="list" id="ad">
+    <option value="{$ad.id}">
+        {$ad.name}
+    </option>
+</volist>
+</select>
+<script type="text/javascript">
+    dialog.onok = function () {
+        var adtype = document.getElementById("adtype");
+        wsubmit('{"id":"'+adtype.value+'"}');
+    };
+</script>
+</body>
+</html>

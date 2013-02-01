@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        #container h3{
+            margin: 0;
+            padding: 0;
+            height: 50px;
+            display: block;
+            font-size: 1.17em;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            font-weight: bold;
+        }
+        #container ul li{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border-bottom: 1px solid #CCC;
+        }
+        #container ul{
+            margin: 25px 0;
+            padding: 0;
+            width: 150px;
+        }
+        #container a{
+            display: block;
+            height: 28px;
+            line-height: 28px;
+            text-align: right;
+            color: #333;
+            width: 142px;
+        }
+        #container a:link, #container a:visited, #container a:active {
+            color: black;
+            font-size: 12px;
+            font-weight: normal;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/javascript">
+    var getObj = function(id){
+        if (!id) return null;
+        if ('string' == typeof id || id instanceof String) {
+            return document.getElementById(id);
+        } else if (id.nodeName && (id.nodeType == 1 || id.nodeType == 9)) {
+            return id;
+        }
+        return null;
+    };
+    var VBread = function(opt){
+        this.initOptions(opt);
+    }
+    VBread.prototype = {
+        initOptions : function(opt){
+            var me = this;
+            for (var k in opt) {
+                me[k] = opt[k];
+            }
+        },
+        getHtmlTpl : function(){
+            return this.getTitleTpl()+"<ul>"+this.getContentHtmlTpl()+"</ul>";
+        },
+        getTitleTpl : function(){
+            return '<h3 '+(this.titleId ? "id='"+this.titleId+"'" : "")+'>'+(this.title||"测试数据标题")+'</h3>';
+        },
+        getContentHtmlTpl : function(){
+            var data = this.data || '[{"name":"首页","link":"www.baidu.com"},{"name":"其他页","link":"www.sohu.com"},{"name":"其他页的其他页","link":"www.sina.com"}]';
+            var obj = eval('('+data+')');
+            var arr = [];
+            for(var i=0,item;item = obj[i++];){
+                arr.push("<li><a href='"+item.link+"' title='"+item.name+"'>"+item.name+"</a></li>");
+            }
+            return arr.join("");
+        },
+        render : function(id){
+            getObj(id||this.id).innerHTML = this.getHtmlTpl();
+        }
+    };
+    var opt = {
+        id:"container",       //容器id
+        data:'[{"name":"首页","link":"www.baidu.com"},{"name":"其他页","link":"www.sohu.com"},{"name":"其他","link":"www.sina.com"}]'   //数据
+    };
+    var bread = new VBread(opt);
+    bread.render()
+
+</script>
+</body>
+</html>

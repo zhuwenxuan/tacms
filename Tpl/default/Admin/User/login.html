@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站管理员登陆</title>
+<meta name="Generator" content="EditPlus">
+<meta name="Copyright" content="Copyright (c) 2009 ThinkPHP.cn" />
+<meta name="Author" content="zhuwenxuan,xuqinghan">
+<meta name="Keywords" content="ThinkPHP,examples">
+<meta name="Description" content="ThinkPHP2.0 Examples">
+<link rel='stylesheet' type='text/css' href='../Public/Css/common.css'>
+</head>
+
+<body>
+	<div style="width: 1080px; margin: 0 auto; background-color: #666;">
+		<div style="width: 500px; height: 400px; float: left;"></div>
+		<div style="width: 500px; height: 400px; float: left">
+			<div style="margin: 200px 0 0 100px;">后台登陆</div>
+			<form id="form" action="__URL__/login" method="post">
+			<table style="margin-left: 100px;">
+				<tr>
+					<td>用户名：</td>
+					<td><input type="text" name="user" id="user"></td>
+				</tr>
+				<tr>
+					<td>密码：</td>
+					<td><input type="password" name="pwd" id="pwd"></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="提交" onclick="login()">
+					</td>
+					<td><input type="reset" value="取消"></td>
+				</tr>
+			</table>
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		function login() {
+			var user = document.getElementById("user");
+			var pwd = document.getElementById("pwd");
+			if (user.value && pwd.value) {
+				var form = document.getElementById("form");
+				form.submit();
+			} else {
+				alert("请输入用户名和密码");
+			}
+		}
+	</script>
+</body>
+</html>

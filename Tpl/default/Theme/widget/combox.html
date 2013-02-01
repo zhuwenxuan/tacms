@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="../Public/js/jquery-1-7-2.js"></script>
+    <style type="text/css">
+
+        .nav-web-div{
+            position: absolute;
+            z-index: 999;
+            display: none;
+        }
+        .nav-web-div a{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="nav-web">
+        <a>aaa</a>
+    </li>
+</ul>
+<div id="nav-web-div" class="nav-web-div">
+    <a>aaa</a>
+    <a>aaa</a>
+    <a>aaa</a>
+</div>
+<script type="text/javascript">
+    var webs = $(".nav-web")[0];
+    var pos = $(webs).position();
+    var height = $(webs).height();
+    var width = $(webs).width();
+    $(webs).mouseover(function(){
+        $("#nav-web-div").show();
+        $("#nav-web-div").css("left",pos.left);
+        $("#nav-web-div").css("top",pos.top+height);
+        $("#nav-web-div").css("width",width);
+    });
+    $(webs).mouseout(function(){
+        $("#nav-web-div").hide();
+    });
+</script>
+</body>
+</html>

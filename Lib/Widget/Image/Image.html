@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="css/image.css">
+    <title>图片微件</title>
+</head>
+<body>
+<div id="img" class="xfui-image ">
+    <div id="img_items" class="xfui-image-items">
+        <volist name="image" id="vo" >
+        <img src="/Tpl/Uploads/m_{$vo}">
+        </volist>
+    </div>
+</div>
+<script type="text/javascript">
+(function () {
+    var utils = function () {};
+    utils.prototype = {
+        $:function ( id ) {
+            return document.getElementById( id );
+        },
+        cssStyleToDomStyle:function () {
+            var test = document.createElement( 'div' ).style, cache = {
+                'float':test.cssFloat != undefined ? 'cssFloat'
+                        : test.styleFloat != undefined ? 'styleFloat'
+                        : 'float'
+            };
+            return function ( cssName ) {
+                return cache[cssName]
+                        || (cache[cssName] = cssName.toLowerCase().replace(
+                        /-./g, function ( match ) {
+                            return match.charAt( 1 ).toUpperCase();
+                        } ));
+            };
+        }(),
+        setStyle:function ( element, name, value ) {
+            element.style[this.cssStyleToDomStyle( name )] = value;
+        }
+    }
+    var ScrollImg = function () {
+        this.utils = new utils();
+        this.init();
+    };
+    ScrollImg.prototype = {
+        current:0,
+        init:function () {
+            this.data = this.getItem();
+        },
+        getItem:function () {
+            var list = this.utils.$( "img_items" ).getElementsByTagName( "img" ), arr = [];
+            for ( var i = 0, ci; ci = list[i++]; ) {
+                arr.push( ci )
+            }
+            return arr;
+        },
+        hide:function () {
+            for ( var i = 0, img; img = this.data[i++]; ) {
+                img.style.display = "none";
+            }
+        },
+        _hiddenCurrent:function ( fun ) {
+            var item = this.data[this.current];
+            item.alpha = 100;
+            this.startMove( item, 0, fun );
+        },
+        next:function () {
+            var me = this;
+            this._hiddenCurrent( function () {
+                me.data[me.current].style.display = "none";
+                me.current = me.isend() ? 0 : me.current + 1;
+                me.show();
+            } );
+        },
+        isend:function () {
+            return this.data.length == this.current + 1;
+        },
+        isstart:function () {
+            return this.current == 0;
+        },
+        pre:function () {
+            var me = this;
+            this._hiddenCurrent( function () {
+                me.getCurrent().style.display = "none";
+                me.current = me.isstart() ? me.data.length - 1
+                        : me.current - 1;
+                me._show();
+            } );
+        },
+        show:function ( index ) {
+            var current = index || this.current;
+            var item = this.data[current];
+            this.utils.setStyle( item, "opacity", "0" );
+            this.utils.setStyle( item, "filter", "alpha(opacity=0)" );
+            item.style.display = "";
+            item.alpha = 0;
+            this.startMove( item, 100 );
+        },
+        toggshow:function ( index ) {
+            var me = this;
+            clearInterval( me.go );
+            this._hiddenCurrent( function () {
+                me.data[me.current].style.display = "none";
+                me.current = index;
+                me.show();
+            } );
+            me.go = setInterval( function () {
+                me.next();
+            }, 5000 );
+        },
+        render:function () {
+            var me = this;
+            me.hide();
+            me.data[me.current].style.display = "";
+            this.go = setInterval( function () {
+                me.next();
+            }, 5000 );
+        },
+        startMove:function ( obj, iTarget, callback ) {
+            var me = this;
+            clearInterval( me.timer );
+            me.timer = setInterval( function () {
+                var iSpeed = 0;
+                if ( obj.alpha < iTarget ) {
+                    iSpeed = !!window.ActiveXObject ? 5 : 2;
+                } else {
+                    iSpeed = !!window.ActiveXObject ? -5 : -2;
+                }
+                if ( obj.alpha == iTarget ) {
+                    clearInterval( me.timer );
+                    callback && callback();
+                } else {
+                    obj.alpha += iSpeed;
+                    obj.style.filter = 'alpha(opacity:' + obj.alpha + ')';
+                    obj.style.opacity = obj.alpha / 100;
+                }
+            }, 30 );
+        }
+    }
+    var scroll = new ScrollImg();
+    scroll.render();
+    window.scroll = scroll;
+})();
+</script>
+</body>
+</html>

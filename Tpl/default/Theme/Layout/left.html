@@ -1,0 +1,12 @@
+ <link rel="stylesheet" href="__PUBLIC__/css/demo.css" type="text/css">
+<div class="list_tilte" onclick="hideorshow(this)">
+	<span>布局管理</span>
+</div>
+<div class="list_detail">
+	<ul>
+		<li id="item_30"><a href="__URL__/index">选择布局</a></li>
+		<volist name="layoutcats" id="layout">
+			<ul><a href="__URL__/index/ltype/{$layout.type}">{$layout.type}</a></ul>
+		</volist>
+	</ul>
+</div>

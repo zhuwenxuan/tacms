@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>图片上传</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link rel="stylesheet" href="__PUBLIC__/ueditor_1_2_0/dialogs/image/image.css" type="text/css" />
+    <style type="text/css">
+        #imgManager a{display: inline-block;margin-right: 20px;cursor: pointer;}
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div id="imageTab">
+        <div id="tabHeads">
+            <span tabSrc="local">本地上传</span>
+            <span tabSrc="imgManager">在线管理</span>
+        </div>
+        <div id="tabBodys">
+            <div id="local" class="panel">
+                <div id="flashContainer"></div>
+                <div><div id="upload"  ></div></div>
+            </div>
+            <div id="imgManager" class="panel" >
+                <div id="imageList">&nbsp;&nbsp;图片加载中……</div>
+            </div>
+            <iframe id="maskIframe" src="about:blank" scrolling="no" frameborder="no"></iframe>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function $G(id){
+        return document.getElementById(id);
+    }
+</script>
+<script type="text/javascript" src="__PUBLIC__/ueditor_1_2_0/dialogs/tangram.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/image.js"></script>
+
+
+</body>
+</html>

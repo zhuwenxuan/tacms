@@ -1,0 +1,31 @@
+.logo{float: left;width: 200px;}
+.wrap_ipt{width: 569px;position: relative;float: left;margin: 25px;}
+.wrap_ipt select{height: 35px;line-height: 20px;float: left;width: 66px;margin-left: 15px;border: 1px solid #AAA;color:#ADADAD;}
+.ipt{background-image: url(http://stacdn201.ganjistatic1.com/src/image/globle/ued/index.__1343801498__.png);background-repeat: no-repeat;background-position: 7px 7px;background-color: white;height: 32px;line-height: 32px;padding: 0 0 0 31px;width: 347px;border: 1px solid #AAA;float: left;color:#ADADAD;}
+.btn-s{float: left;color: white;font-weight: bold;background:url("/Public/images/search.png");cursor: pointer;width: 83px;height: 31px;border: none;font-size: 14px;margin-left:15px;}
+.userstate{float:right;color:red;padding-right: 24px;}
+.userstate a:visited{ color:red;}
+.userstate a:hover{color:red;text-decoration:underline;}
+.userstate a:active{color:red;}
+.userstate a{color:red;}
+.zhuce .xfui-dialog-titlebar{background:url(/Public/images/zhucebar.png) repeat-x; width:459px;height:29px;color:white;font-weight:800;font-size:14px;}
+.zhuce .xfui-dialog-body{width:459px;flow-y:visible; height:380px;}
+.zhuce .xfui-dialog-content{font-size:12px;width:459px;overflow-y:visible;height: 100%;}
+.zhuce .zhucebody{overflow-y:visible;}
+.zhucebody .zhuceinput{padding-top:15px; padding-left:40px;}
+.zhuceinput li{line-height:35px !important;height:40px;}
+.zhuce .zhucey{background: url(/Public/images/zhucey.jpg) no-repeat center; width:86px;height:28px; border:0px;}
+.zhuce .zhucec{background: url(/Public/images/zhucen.jpg) no-repeat center;width:86px;height:28px; border:0px;}
+.zhuce .xfui-button-body{}
+
+
+.userlogin .xfui-dialog-titlebar{background:url(/Public/images/zhucebar.png) repeat-x; width:459px;height:29px;color:white;font-weight:800;font-size:14px;}
+.userlogin .xfui-dialog-body{width:459px;flow-y:visible; height:320px;}
+.userlogin .xfui-dialog-content{font-size:12px;width:459px;overflow-y:visible;height: 100%;}
+.userlogin .zhucebody{overflow-y:visible;}
+.userlogin .zhucey{background: url(/Public/images/zhucey.jpg) no-repeat center; width:86px;height:28px; border:0px;}
+.userlogin .zhucec{background: url(/Public/images/zhucen.jpg) no-repeat center;width:86px;height:28px; border:0px;}
+.userlogin .xfui-button-body{}
+.zhucebtn{padding-left:52px;}
+.zhucemyinput{width: 185px;border：1px solid rgb(174,174,174);}
+.margin510{margin-left:10px; margin-top:5px;}

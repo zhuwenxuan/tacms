@@ -1,0 +1,16 @@
+<script type="text/javascript">
+	
+</script>
+<div class="message">
+	<table cellpadding=3 cellspacing=3 style="width: 1000px;" border="1">
+		<tr>
+			<td><if condition="$path == '' "> 选择风格 <else /> 当前路径{$path} </if></td>
+		</tr>
+		<volist name="file" id="file">
+		<tr>
+			<td><a href="__APP__/Template/index/path/{$file.path}">{$file.name}</a></td>
+		</tr>
+		</volist>
+	</table>
+
+</div>

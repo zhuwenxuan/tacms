@@ -1,0 +1,79 @@
+/*demo page css*/
+body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;background-color: #FAFAFA;}
+div.btn{float: right;width:50px;height:20px;border: 1px solid red;position: relative;right: 0;top:0;}
+.wrap{width:1080px;margin: 0 auto;padding: 10px;}
+.clear{clear:both;}
+.floatleft{float:left;}
+.fl{float:left;}
+.fr{float:right;}
+.myblod{border:1px solid #ccc;}
+.grayblod{border:3px solid #ccc;}
+.redblod{border:3px solid red;}
+.fontblod{font-weight:bold;}
+.textcenter{text-align:center;}
+.mynewsdetailtitle{font-size:16px; font-family:"黑体";font-weight:bold;}
+.mynewsdetailcontent{text-indent:2em;line-height:24px;font-size:14px;}
+.myul{list-style:none;}
+.myli{float:left;}
+.limargin{margin-right:5px;}
+#container {margin:0 auto; width: 1000px;}
+.navigation{height: 30px;width: 964px;padding: 10px 0px 0px 20px; background-color:rgb(253,253,253);}
+.content{width: 722px;margin-top: 20px;float: left;}
+.contentimg{height: 301px;width: 696px; background-color:rgb(255,255,255); padding:22px 12px;}
+.showimage{padding:3px; width:280px;height:230px;}
+.contentdetail{margin-top: 20px;width: 720px; background-color:rgb(255,255,255);}
+.margin46{ margin-left:45px;}
+.detailul{line-height:35px;}
+.telphone{ background-image:url("/Public/images/telphone.jpg"); width:182px;height:37px; padding:3px 0px 0px 45px; font-size:26px; color:rgb(255,255,255);letter-spacing:2px; }
+.sidebar{height: 800px;width: 240px;margin-top: 20px;margin-left:20px;float: left;}
+.owner{height:198px;padding: 20px 0px 0px 44px;background-color:rgb(255,255,255);}
+.ownerimg{height:146px;width:146px;}
+.ownername{font-weight:bold; padding-left:48px; font-size:14px;}
+.title12w{color:rgb(255,255,255);font-size:12px; font-weight:normal;}
+.marginl105{margin-left:105px;}
+.bgwhite{background-color:rgb(255,255,255);}
+.bggary{background-color:rgb(246,246,246);}
+.h82w240{height:69px; width:224px; }
+.padding5{padding:8px 0px 0px 13px;}
+.myinline{display:inline;}
+.myblock{display:block;}
+.w237{width:237px;}
+.cotentul{line-height: 20px;
+margin-left: -1px;
+height: 30px;
+margin-bottom: -5px;}
+.bgtab{height:3px;width:720px; background:url("/Public/images/bottombar.jpg") repeat-x; clear:both; }
+.tabgary{height:20px;width:103px; background:url("/Public/images/tabbargary.png") no-repeat; text-align:center; padding-top:5px;color: black;font-size:14px;font-weight:bold;}
+.tabred{height:20px;width:103px; background:url("/Public/images/tabbarred.png") no-repeat; text-align:center; padding-top:5px; }
+.detailnav{background-color:rgb(250,250,250);}
+.padding20{padding:20px 12px 20px 12px;}
+.t14w{color:white; font-size:14px;font-weight:bold;}
+.showimgbg{background:url("/Public/images/titlebar.jpg") no-repeat; width:640px;height:28px; padding: 3px 0px 0px 10px;}
+.margin500{margin-left:500px;}
+.largeimg{width:597px;height:303px;padding:2px; margin:10px 0px 0px 22px;}
+.homemap{width:648px;height:336px;}
+.footbgline{height:3px;width:720px; background:url("/Public/images/bottombar.jpg") repeat-x;}
+.titlebg{background:url("/Public/images/publishbg.jpg") repeat; width:718px;height:104px;}
+.myaddhome input{width:250px;}
+.myaddhome .width30{width:30px;}
+.mynewsdetail .width30{width:30px;}
+.myaddhome .mymap{width:400px;height:145px;border:1px solid #ccc;}
+.textr{text-align:right;}
+.textl{text-align:left;}
+.myaddhome .publishbtn{height:28px;width:140px; background:url("/Public/images/publishbtn.jpg") no-repeat;border:0px;}
+.myaddhome .back{height:28px;width:140px; background-color:rgb(208,29,0);border:1px solid black; color:white;font-weight:800;}
+.myaddhome .width10{width:13px;}
+.homeheard{background:url(../images1/heardhome.jpg) repeat-x;height:31px;font-weight:800; text-align:center;letter-spacing:2px;}
+.managehometd img{ border:0px; width:24px; height:24px;}
+.whitebg{background-color:white; text-align:center;}
+.graybg{background-color:rgb(244,244,244); text-align:center;}
+.mypage{font-weight:normal;}
+.mypage span{display:inline-block;}
+.mypage img{width:20px;height:20px;vertical-align:middle;}
+.padding10{padding:5px 2px 0px 34px;}
+.padding10 img{vertical-align:middle;}
+.padding20 img{vertical-align:middle;}
+td{height:30px;}
+.userbg{background-color:white;}
+.usercenter{height: 210px;margin-top: 20px;width: 239px;}
+.usertitle{background-image:url("/Public/images/history.png"); width:230px;height:23px;padding:5px 0px 0px 10px;}

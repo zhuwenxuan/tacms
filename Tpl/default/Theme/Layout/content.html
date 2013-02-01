@@ -1,0 +1,40 @@
+
+<p></p>
+<table width="99%" border="0" align="center" cellpadding="3"
+	cellspacing="1" class="table_style" style="text-align: center;">
+	我的模板
+	<tr>
+		<th>预览</th>
+		<th>是否为默认模板</th>
+		<th>操作</th>
+	</tr>
+	<volist name="userLayout" id="layout">
+	<tr>
+		<th>{$layout.thumb}</th>
+		<th><if condition="$layout.isdefault ==1 "> 是 <else /> 否 </if></th>
+		<th><a href="__APP__/Admin/Layout/edit/id/{$layout.id}">修改</a>|<a href="__APP__/Admin/Layout/delete/id/{$layout.id}/ltype/{$layout.type}">删除</a>|<a href="__APP__/Admin/Layout/setDefault/id/{$layout.id}/ltype/{$layout.layoutType}">设为默认</a>|<a href="__APP__/Admin/Layout/getThumBnail/layoutId">截图</a></th>
+	</tr>
+	</volist>
+</table>
+<br />
+<table width="99%" border="0" align="center" cellpadding="3"
+	cellspacing="1" class="table_style" style="text-align: center;">
+	<tr>
+		<td width="10%">序号</td>
+		<td width="70%">缩略图</td>
+		<td>操作</td>
+	</tr>
+	<volist name="layouts" id="layout">
+	<tr>
+		<td>{$key+1}</td>
+		<td>{$layout.path}/{$layout.thumb}</td>
+		<td><a href="__APP__/Admin/Layout/preview/id/{$layout.id}">预览</a>&nbsp;|&nbsp;<a
+			href="__APP__/Admin/Layout/apply/id/{$layout.id}">应用</td>
+	</tr>
+	</volist>
+</table>
+
+
+
+
+

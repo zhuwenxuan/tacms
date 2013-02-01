@@ -1,0 +1,8 @@
+/indexer -c ../etc/sphinx.conf delta_news --rotate
+/indexer -c ../etc/sphinx.conf delta_picture --rotate
+/indexer -c ../etc/sphinx.conf delta_single --rotate
+
+
+/indexer -c ../csft_mysql.conf --merge news delta_news  --merge-dst-range delFlag 11
+/indexer -c ../csft_mysql.conf --merge picture delta_picture --merge-dst-range delFlag 11
+/indexer -c ../csft_mysql.conf --merge single delta_single --merge-dst-range delFlag 11

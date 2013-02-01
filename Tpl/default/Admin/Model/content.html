@@ -1,0 +1,35 @@
+<script type="text/javascript">
+<!--
+function checkDelete(id){
+	if(confirm('你确定要删除该栏目？')){location.href='__URL__/delete/id/'+id}
+}
+//-->
+</script>
+<div class="message">
+	<p><a href="__URL__/toInsert/">添加</a></p>
+	<table cellpadding=3 cellspacing=3 style="width: 1000px;" border="1">
+		<tr>
+			<td>modelid</td>
+			<td>模型名称</td>
+			<td>数据表</td>
+			<td>描述</td>
+			<td>状态</td>
+			<td>操作</td>
+		</tr>
+		<volist name="modelList" id="model">
+		<tr>
+			<td>{$model.modelid}</td>
+			<td>
+			{$model.name}
+		</td>
+			<td>{$model.tablename}&nbsp;</td>
+			<td>{$model.description} &nbsp;</td>
+			<td>{$model.disabled}</td>
+			<td><a href="__URL__/toUpdate/id/{$model.modelid}">编辑</a>|<a href="javascript:void(0);" 
+			onclick="javascript:checkDelete('{$model.modelid}');">删除</a></td>
+		</tr>
+		</volist>
+	</table>
+	<div>{$page}</div>
+	
+</div>

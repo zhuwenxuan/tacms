@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>图片上传</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link rel="stylesheet" href="__PUBLIC__/ueditor_1_2_0/dialogs/image/image1.css" type="text/css" />
+    <style type="text/css">
+        #imgManager1 a{display: inline-block;margin-right: 20px;cursor: pointer;}
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div id="imageTab1">
+        <div id="tabHeads1">
+            <span tabSrc="local1">本地上传</span>
+            <span tabSrc="imgManager1">在线管理</span>
+        </div>
+        <div id="tabBodys1">
+            <div id="local1" class="panel">
+                <div id="flashContainer1"></div>
+                <div><div id="upload1"  ></div></div>
+            </div>
+            <div id="imgManager1" class="panel" >
+                <div id="imageList1">&nbsp;&nbsp;图片加载中……</div>
+            </div>
+            <iframe id="maskIframe1" src="about:blank" scrolling="no" frameborder="no"></iframe>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function $G(id){
+        return document.getElementById(id);
+    }
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/image1.js"></script>
+
+
+</body>
+</html>
