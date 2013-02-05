@@ -29,7 +29,7 @@ a.xfui-box:hover { text-decoration: none; }
 a.xfui-box:active { text-decoration: none; }
 table.xfui-box { border-collapse: collapse; }
 ul.xfui-box { list-style-type: none; }
-div.xfui-box {background-color: white; position: relative; display: -moz-inline-box!important; display: inline-block!important; vertical-align: top;  }
+div.xfui-box { position: relative; display: -moz-inline-box!important; display: inline-block!important; vertical-align: top;  }
 .xfui-clearfix { zoom:1 }
 .xfui-clearfix:after { content: '\20'; display: block; clear: both; }
 * html div.xfui-box { display: inline!important; }

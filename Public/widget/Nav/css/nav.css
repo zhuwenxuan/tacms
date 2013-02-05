@@ -1,0 +1,23 @@
+.navwrap {
+    width: 1002px;
+    font-size: 14px;
+    height: 50px;
+    background: url("http://4267.webmall.yunhosting.com/diy/pics/20100304/1267666676.jpg") no-repeat 0 -86px;
+    text-align: center;
+}
+
+.navwrap .navcontent {
+    display: inline-block;
+    margin: 5px auto 0;
+}
+
+.navwrap .navcontent a {
+    display: inline-block;
+    cursor: pointer;
+    padding:12px 30px;
+    text-decoration: none;
+    color: #fff;
+}
+.navwrap .navcontent a:hover{
+    background: url('http://4267.webmall.yunhosting.com/menu/templates/images/mainmenu_dolphin/menunow.gif') no-repeat ;
+}
