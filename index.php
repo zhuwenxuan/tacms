@@ -7,5 +7,7 @@ define('THINK_PATH', 'ThinkPHP');
 // define( 'STRIP_RUNTIME_SPACE' , false);
 // define( 'NO_CACHE_RUNTIME' , True);
 // 加载框架入口文件
+
+//
 require( THINK_PATH."/ThinkPHP.php");
 App::run();
